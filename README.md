@@ -38,33 +38,6 @@ The dataset is downloaded on demand through `kagglehub` (or read from `/kaggle/i
 | Optimiser | AdamW, lr 1e-4, weight decay 1e-4, batch size 16, 50 epochs, seed 0 |
 | Triage | Uncertainty thresholds route exams to auto-read, routine reading, or arbitration, tuned to a sensitivity floor of 95% |
 
-## Results
-
-Evaluated on 200 held-out test images (threshold 0.5), with 95% bootstrap confidence intervals:
-
-| Metric | Value | 95% CI |
-|---|---|---|
-| Accuracy | 0.730 | 0.670 – 0.795 |
-| Sensitivity (recall) | 0.680 | 0.593 – 0.771 |
-| Specificity | 0.780 | 0.698 – 0.861 |
-| Precision (PPV) | 0.756 | n/a |
-| F1 | 0.716 | n/a |
-| ROC-AUC | 0.839 | 0.783 – 0.893 |
-| PR-AUC | 0.826 | 0.749 – 0.896 |
-| MCC | 0.462 | n/a |
-| Brier score | 0.226 | n/a |
-| ECE (calibration error) | 0.227 | n/a |
-
-Confusion matrix: TP = 68, FP = 22, TN = 78, FN = 32.
-
-**Other findings**
-
-- Uncertainty is informative: accuracy is 88% on the 50% most-certain images versus 58% on the 50% least-certain, and uncertainty predicts errors with an AUC of 0.77.
-- The auxiliary density head reaches 62.5% accuracy.
-- Lesion localisation from the mask head is weak (mean Dice 0.189, mean IoU 0.142, over 101 test images with ground-truth masks).
-
-The notebook also produces ROC and precision-recall curves, a confusion matrix, risk-coverage plots, an image gallery with predicted and true lesions, and a per-image results table.
-
 ## Getting Started
 
 The notebook was developed on **Google Colab** with a GPU.
